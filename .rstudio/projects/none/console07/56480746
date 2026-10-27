@@ -28,3 +28,55 @@ hub.com/MOHITX101/data-science-.git
 git branch -M main
 git push -u origin mainReinitialized existing Git repository in /home/rstudio/.git/
 ]0;/home/rstudiorstudio@bb3342ea7994:~$ git add .
+]0;/home/rstudiorstudio@bb3342ea7994:~$ git commit -m "Complete Practical Machine Learning course project analysis"
+[master (root-commit) 2e10e99] Complete Practical Machine Learning course project analysis
+ 36 files changed, 651 insertions(+)
+ create mode 100755 .Rprofile
+ create mode 100644 .bash_history
+ create mode 100644 .gitconfig
+ create mode 100755 .hidden
+ create mode 100755 .local/share/rstudio/rstudio-server.json
+ create mode 100644 .rstudio/addin_registry
+ create mode 100644 .rstudio/history_database
+ create mode 100644 .rstudio/monitored/lists/addins_mru
+ create mode 100644 .rstudio/monitored/lists/file_mru
+ create mode 100644 .rstudio/monitored/lists/help_history_links
+ create mode 100644 .rstudio/monitored/lists/plot_publish_mru
+ create mode 100644 .rstudio/monitored/lists/project_mru
+ create mode 100644 .rstudio/monitored/lists/user_dictionary
+ create mode 100644 .rstudio/notebooks/patch-chunk-names
+ create mode 100644 .rstudio/persistent-state
+ create mode 100644 .rstudio/projects/none/console07/56480746
+ create mode 100644 .rstudio/projects/none/console07/56480746.env
+ create mode 100644 .rstudio/projects/none/console07/9EB1E570
+ create mode 100644 .rstudio/projects/none/console07/9EB1E570.env
+ create mode 100644 .rstudio/projects/none/console07/INDEX001
+ create mode 100644 .rstudio/sessions/active/session-ae416c1c/properites/executing
+ create mode 100644 .rstudio/sessions/active/session-ae416c1c/properites/initial
+ create mode 100644 .rstudio/sessions/active/session-ae416c1c/properites/last-used
+ create mode 100644 .rstudio/sessions/active/session-ae416c1c/properites/project
+ create mode 100644 .rstudio/sessions/active/session-ae416c1c/properites/r-version
+ create mode 100644 .rstudio/sessions/active/session-ae416c1c/properites/r-version-home
+ create mode 100644 .rstudio/sessions/active/session-ae416c1c/properites/r-version-label
+ create mode 100644 .rstudio/sessions/active/session-ae416c1c/properites/running
+ create mode 100644 .rstudio/sessions/active/session-ae416c1c/properites/save_prompt_required
+ create mode 100644 .rstudio/sessions/active/session-ae416c1c/properites/working-dir
+ create mode 100644 .rstudio/sessions/active/session-ae416c1c/session-persistent-state
+ create mode 100644 .rstudio/sources/s-ae416c1c/AAC08A84
+ create mode 100644 .rstudio/sources/s-ae416c1c/AAC08A84-contents
+ create mode 100644 .rstudio/sources/s-ae416c1c/lock_file
+ create mode 100755 Getting Started with Your Lab.rd
+ create mode 100755 README.rd
+]0;/home/rstudiorstudio@bb3342ea7994:~$ git remote add origin https://github.com/MOHITX101/data-science-.git
+fatal: remote origin already exists.
+]0;/home/rstudiorstudio@bb3342ea7994:~$ git branch -M main
+]0;/home/rstudiorstudio@bb3342ea7994:~$ git push -u origin main
+remote: Invalid username or token. Password authentication is not supported for Git operations.
+fatal: Authentication failed for 'https://github.com/MOHITX101/data-science-.git/'
+]0;/home/rstudiorstudio@bb3342ea7994:~$ git config --global user.name "Mohit"
+]0;/home/rstudiorstudio@bb3342ea7994:~$ git config --global user.email "mohit.mitmpl2023@learner.manipal.edu"
+]0;/home/rstudiorstudio@bb3342ea7994:~$ git init
+hub.com/MOHITX101/data-science-.git
+git branch -M main
+git push -u origin mainReinitialized existing Git repository in /home/rstudio/.git/
+]0;/home/rstudiorstudio@bb3342ea7994:~$ git add .
