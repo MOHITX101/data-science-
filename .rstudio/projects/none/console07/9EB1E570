@@ -1,0 +1,15 @@
+]0;/home/rstudiorstudio@31344f441d88:~$ [Krstudio@31344f441d88:~$ ^?^?
+bash: $'\177\177': command not found
+]0;/home/rstudiorstudio@31344f441d88:~$ ^V[Kgit init
+Initialized empty Git repository in /home/rstudio/.git/
+]0;/home/rstudiorstudio@31344f441d88:~$ git add.
+git: 'add.' is not a git command. See 'git --help'.
+
+The most similar command is
+	add
+]0;/home/rstudiorstudio@31344f441d88:~$ ^C
+]0;/home/rstudiorstudio@31344f441d88:~$ ^C
+]0;/home/rstudiorstudio@31344f441d88:~$ =[Kgit add.[K .
+]0;/home/rstudiorstudio@31344f441d88:~$ git branch -M main
+error: refname refs/heads/master not found
+fatal: Branch rename failed

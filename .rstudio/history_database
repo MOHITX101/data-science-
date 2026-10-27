@@ -1,0 +1,80 @@
+1793108096998:print(quiz_predictions)
+1793108168870:# Practical Machine Learning - Course Project Writeup
+1793108168911:# Reproducible Script
+1793108168981:library(caret)
+1793108172245:library(randomForest)
+1793108172312:library(gbm)
+1793108172404:# 1. Load Data
+1793108172440:train_url <- "https://d396qusza40orc.cloudfront.net/predmachlearn/pml-training.csv"
+1793108172481:test_url  <- "https://d396qusza40orc.cloudfront.net/predmachlearn/pml-testing.csv"
+1793108172551:training_raw <- read.csv(train_url, na.strings = c("NA", "#DIV/0!", ""))
+1793108175370:testing_raw  <- read.csv(test_url,  na.strings = c("NA", "#DIV/0!", ""))
+1793108202089:# 2. Clean Missing Values and Identification Columns
+1793108202126:# Keep columns with less than 60% NAs
+1793108202164:valid_cols <- colSums(is.na(training_raw)) < (0.6 * nrow(training_raw))
+1793108202456:train_clean <- training_raw[, valid_cols]
+1793108202496:test_clean  <- testing_raw[, valid_cols]
+1793108209486:# Remove identification metadata (columns 1 to 7)
+1793108209522:train_clean <- train_clean[, -(1:7)]
+1793108209559:test_clean  <- test_clean[, -(1:7)]
+1793108214088:Convert outcome to factor
+1793108214160:train_clean$classe <- as.factor(train_clean$classe)
+1793108222060:# 3. Data Partitioning for Validation
+1793108222112:set.seed(12345)
+1793108222177:inTrain <- createDataPartition(train_clean$classe, p = 0.70, list = FALSE)
+1793108222255:train_set <- train_clean[inTrain, ]
+1793108222324:valid_set <- train_clean[-inTrain, ]
+1793108235021:# 4. Model Training with 5-Fold Cross Validation
+1793108235062:control_rf <- trainControl(method = "cv", number = 5, verboseIter = FALSE)
+1793108235138:set.seed(12345)
+1793108235179:model_rf <- train(classe ~ ., data = train_set, method = "rf", trControl = control_rf)
+1793108982087:# 5. Model Evaluation on Validation Set
+1793108982123:pred_rf <- predict(model_rf, newdata = valid_set)
+1793108982652:conf_matrix <- confusionMatrix(pred_rf, valid_set$classe)
+1793108982708:print(conf_matrix)
+1793108982754:# Out-of-Sample Error Calculation
+1793108982797:out_of_sample_error <- 1 - conf_matrix$overall['Accuracy']
+1793108982837:cat("Estimated Out-of-Sample Error:", round(out_of_sample_error * 100, 2), "%\n")
+1793108982875:# 6. Final Predictions for the 20 Quiz Test Cases
+1793108982911:quiz_predictions <- predict(model_rf, newdata = test_clean)
+1793108983082:print(quiz_predictions)
+1793108983121:# 5. Model Evaluation on Validation Set
+1793108983159:pred_rf <- predict(model_rf, newdata = valid_set)
+1793108983662:conf_matrix <- confusionMatrix(pred_rf, valid_set$classe)
+1793108983708:print(conf_matrix)
+1793108983749:# Out-of-Sample Error Calculation
+1793108983787:out_of_sample_error <- 1 - conf_matrix$overall['Accuracy']
+1793108983823:cat("Estimated Out-of-Sample Error:", round(out_of_sample_error * 100, 2), "%\n")
+1793108983858:# 6. Final Predictions for the 20 Quiz Test Cases
+1793108983894:quiz_predictions <- predict(model_rf, newdata = test_clean)
+1793108984050:print(quiz_predictions)
+1793108984090:git init
+1793117131114:# Practical Machine Learning - Course Project Writeup
+1793117131171:# Reproducible Script
+1793117131256:library(caret)
+1793117133902:library(randomForest)
+1793117133967:library(gbm)
+1793117142128:# 1. Load Data
+1793117142168:train_url <- "https://d396qusza40orc.cloudfront.net/predmachlearn/pml-training.csv"
+1793117142209:test_url  <- "https://d396qusza40orc.cloudfront.net/predmachlearn/pml-testing.csv"
+1793117147837:training_raw <- read.csv(train_url, na.strings = c("NA", "#DIV/0!", ""))
+1793117150308:testing_raw  <- read.csv(test_url,  na.strings = c("NA", "#DIV/0!", ""))
+1793117158176:# 2. Clean Missing Values and Identification Columns
+1793117158217:# Keep columns with less than 60% NAs
+1793117158259:valid_cols <- colSums(is.na(training_raw)) < (0.6 * nrow(training_raw))
+1793117158314:train_clean <- training_raw[, valid_cols]
+1793117158357:test_clean  <- testing_raw[, valid_cols]
+1793117167001:# Remove identification metadata (columns 1 to 7)
+1793117167046:train_clean <- train_clean[, -(1:7)]
+1793117167089:test_clean  <- test_clean[, -(1:7)]
+1793117171461:# Convert outcome to factor
+1793117171503:train_clean$classe <- as.factor(train_clean$classe)
+1793117176812:# 3. Data Partitioning for Validation
+1793117176855:set.seed(12345)
+1793117176900:inTrain <- createDataPartition(train_clean$classe, p = 0.70, list = FALSE)
+1793117176957:train_set <- train_clean[inTrain, ]
+1793117177004:valid_set <- train_clean[-inTrain, ]
+1793117182476:# 4. Model Training with 5-Fold Cross Validation
+1793117182519:control_rf <- trainControl(method = "cv", number = 5, verboseIter = FALSE)
+1793117187330:set.seed(12345)
+1793117187373:model_rf <- train(classe ~ ., data = train_set, method = "rf", trControl = control_rf)

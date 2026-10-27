@@ -1,0 +1,51 @@
+# Practical Machine Learning - Course Project Writeup
+# Reproducible Script
+
+library(caret)
+library(randomForest)
+library(gbm)
+
+# 1. Load Data
+train_url <- "https://d396qusza40orc.cloudfront.net/predmachlearn/pml-training.csv"
+test_url  <- "https://d396qusza40orc.cloudfront.net/predmachlearn/pml-testing.csv"
+
+training_raw <- read.csv(train_url, na.strings = c("NA", "#DIV/0!", ""))
+testing_raw  <- read.csv(test_url,  na.strings = c("NA", "#DIV/0!", ""))
+
+# 2. Clean Missing Values and Identification Columns
+# Keep columns with less than 60% NAs
+valid_cols <- colSums(is.na(training_raw)) < (0.6 * nrow(training_raw))
+train_clean <- training_raw[, valid_cols]
+test_clean  <- testing_raw[, valid_cols]
+
+# Remove identification metadata (columns 1 to 7)
+train_clean <- train_clean[, -(1:7)]
+test_clean  <- test_clean[, -(1:7)]
+
+# Convert outcome to factor
+train_clean$classe <- as.factor(train_clean$classe)
+
+# 3. Data Partitioning for Validation
+set.seed(12345)
+inTrain <- createDataPartition(train_clean$classe, p = 0.70, list = FALSE)
+train_set <- train_clean[inTrain, ]
+valid_set <- train_clean[-inTrain, ]
+
+# 4. Model Training with 5-Fold Cross Validation
+control_rf <- trainControl(method = "cv", number = 5, verboseIter = FALSE)
+
+set.seed(12345)
+model_rf <- train(classe ~ ., data = train_set, method = "rf", trControl = control_rf)
+
+# 5. Model Evaluation on Validation Set
+pred_rf <- predict(model_rf, newdata = valid_set)
+conf_matrix <- confusionMatrix(pred_rf, valid_set$classe)
+print(conf_matrix)
+
+# Out-of-Sample Error Calculation
+out_of_sample_error <- 1 - conf_matrix$overall['Accuracy']
+cat("Estimated Out-of-Sample Error:", round(out_of_sample_error * 100, 2), "%\n")
+
+# 6. Final Predictions for the 20 Quiz Test Cases
+quiz_predictions <- predict(model_rf, newdata = test_clean)
+print(quiz_predictions)
